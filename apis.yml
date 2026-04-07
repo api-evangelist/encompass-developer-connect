@@ -1,8 +1,8 @@
 aid: encompass-developer-connect
 name: Encompass Developer Connect
 description: >-
-  Encompass Developer Connect allows developers to configure, customize, and
-  administer loan information and resources programmatically through REST APIs. 
+  Encompass Developer Connect allows developers to configure, customize, and administer
+  loan information and resources programmatically through REST APIs.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -18,9 +18,8 @@ apis:
   - aid: encompass-developer-connect:encompass-developer-connect
     name: Encompass Developer Connect
     description: >-
-      Encompass Developer Connect allows developers to configure, customize, and
-      administer loan information and resources programmatically through REST
-      APIs. 
+      Encompass Developer Connect allows developers to configure, customize, and administer
+      loan information and resources programmatically through REST APIs.
     humanURL: ' https://developer.icemortgagetechnology.com/developer-connect/docs/welcome'
     tags:
       - API
