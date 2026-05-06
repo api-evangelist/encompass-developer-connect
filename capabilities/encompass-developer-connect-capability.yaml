@@ -1,0 +1,294 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Encompass Developer Connect API
+  description: Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically
+    configure, customize, and administer loan information and resources for Encompass clients. The platform exposes APIs across
+    loan manufacturing, loan pipeline management, product and pricing, compliance, documents and eFolder, loan data extracts,
+    and loan folders. Authentication is handled with OAuth 2.0, and supports User Impersonation, API User (ISV Partner), Federated
+    SAML SSO, and Multi-Factor Authentication.
+  tags:
+  - Encompass
+  - Developer
+  - Connect
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: encompass-developer-connect
+    baseUri: https://api.elliemae.com/encompass/v3
+    description: Encompass Developer Connect API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{ENCOMPASS_DEVELOPER_CONNECT_TOKEN}}'
+    resources:
+    - name: oauth2-v1-token
+      path: /oauth2/v1/token
+      operations:
+      - name: issueaccesstoken
+        method: POST
+        description: Encompass Developer Connect Issue an OAuth 2.0 access token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: loanpipeline
+      path: /loanPipeline
+      operations:
+      - name: searchloanpipeline
+        method: POST
+        description: Encompass Developer Connect Search the loan pipeline
+        inputParameters:
+        - name: cursorType
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: loans
+      path: /loans
+      operations:
+      - name: createloan
+        method: POST
+        description: Encompass Developer Connect Create a new loan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: loans-loanid
+      path: /loans/{loanId}
+      operations:
+      - name: getloan
+        method: GET
+        description: Encompass Developer Connect Retrieve a loan
+        inputParameters:
+        - name: loanId
+          in: path
+          type: string
+          required: true
+        - name: entities
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateloan
+        method: PATCH
+        description: Encompass Developer Connect Update a loan
+        inputParameters:
+        - name: loanId
+          in: path
+          type: string
+          required: true
+        - name: appendData
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteloan
+        method: DELETE
+        description: Encompass Developer Connect Delete a loan
+        inputParameters:
+        - name: loanId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: encompass-developer-connect-rest
+    description: REST adapter for Encompass Developer Connect API.
+    resources:
+    - path: /oauth2/v1/token
+      name: issueaccesstoken
+      operations:
+      - method: POST
+        name: issueaccesstoken
+        description: Encompass Developer Connect Issue an OAuth 2.0 access token
+        call: encompass-developer-connect.issueaccesstoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /loanPipeline
+      name: searchloanpipeline
+      operations:
+      - method: POST
+        name: searchloanpipeline
+        description: Encompass Developer Connect Search the loan pipeline
+        call: encompass-developer-connect.searchloanpipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /loans
+      name: createloan
+      operations:
+      - method: POST
+        name: createloan
+        description: Encompass Developer Connect Create a new loan
+        call: encompass-developer-connect.createloan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /loans/{loanId}
+      name: getloan
+      operations:
+      - method: GET
+        name: getloan
+        description: Encompass Developer Connect Retrieve a loan
+        call: encompass-developer-connect.getloan
+        with:
+          loanId: rest.loanId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /loans/{loanId}
+      name: updateloan
+      operations:
+      - method: PATCH
+        name: updateloan
+        description: Encompass Developer Connect Update a loan
+        call: encompass-developer-connect.updateloan
+        with:
+          loanId: rest.loanId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /loans/{loanId}
+      name: deleteloan
+      operations:
+      - method: DELETE
+        name: deleteloan
+        description: Encompass Developer Connect Delete a loan
+        call: encompass-developer-connect.deleteloan
+        with:
+          loanId: rest.loanId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: encompass-developer-connect-mcp
+    transport: http
+    description: MCP adapter for Encompass Developer Connect API for AI agent use.
+    tools:
+    - name: issueaccesstoken
+      description: Encompass Developer Connect Issue an OAuth 2.0 access token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: encompass-developer-connect.issueaccesstoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchloanpipeline
+      description: Encompass Developer Connect Search the loan pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: encompass-developer-connect.searchloanpipeline
+      with:
+        cursorType: tools.cursorType
+        limit: tools.limit
+      inputParameters:
+      - name: cursorType
+        type: string
+        description: cursorType
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createloan
+      description: Encompass Developer Connect Create a new loan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: encompass-developer-connect.createloan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getloan
+      description: Encompass Developer Connect Retrieve a loan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: encompass-developer-connect.getloan
+      with:
+        loanId: tools.loanId
+        entities: tools.entities
+      inputParameters:
+      - name: loanId
+        type: string
+        description: loanId
+        required: true
+      - name: entities
+        type: string
+        description: entities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateloan
+      description: Encompass Developer Connect Update a loan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: encompass-developer-connect.updateloan
+      with:
+        loanId: tools.loanId
+        appendData: tools.appendData
+      inputParameters:
+      - name: loanId
+        type: string
+        description: loanId
+        required: true
+      - name: appendData
+        type: boolean
+        description: appendData
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteloan
+      description: Encompass Developer Connect Delete a loan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: encompass-developer-connect.deleteloan
+      with:
+        loanId: tools.loanId
+      inputParameters:
+      - name: loanId
+        type: string
+        description: loanId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    ENCOMPASS_DEVELOPER_CONNECT_TOKEN: ENCOMPASS_DEVELOPER_CONNECT_TOKEN
