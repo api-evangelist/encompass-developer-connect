@@ -43,7 +43,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
       - type: Authentication
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
@@ -53,20 +53,20 @@ apis:
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/postman
       - type: Forum
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
-      - type: Release Notes
+      - type: ReleaseNotes
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
 common:
   - type: Website
     url: https://developer.icemortgagetechnology.com/
   - type: Documentation
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
   - type: Authentication
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
   - type: Forum
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
-  - type: Release Notes
+  - type: ReleaseNotes
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
   - type: Pricing
     url: https://www.icemortgagetechnology.com/encompass
