@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Encompass Developer Connect API — Authentication
+  description: 'Encompass Developer Connect API — Authentication. 1 operations. Lead operation: Encompass Developer Connect
+    Issue an OAuth 2.0 access token. Self-contained Naftiko capability covering one Encompass Developer Connect business surface.'
+  tags:
+  - Encompass Developer Connect
+  - Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENCOMPASS_DEVELOPER_CONNECT_API_KEY: ENCOMPASS_DEVELOPER_CONNECT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: encompass-developer-connect-authentication
+    baseUri: https://api.elliemae.com/encompass/v3
+    description: Encompass Developer Connect API — Authentication business capability. Self-contained, no shared references.
+    resources:
+    - name: oauth2-v1-token
+      path: /oauth2/v1/token
+      operations:
+      - name: issueaccesstoken
+        method: POST
+        description: Encompass Developer Connect Issue an OAuth 2.0 access token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ENCOMPASS_DEVELOPER_CONNECT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: encompass-developer-connect-authentication-rest
+    port: 8080
+    description: REST adapter for Encompass Developer Connect API — Authentication. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/oauth2/v1/token
+      name: oauth2-v1-token
+      description: REST surface for oauth2-v1-token.
+      operations:
+      - method: POST
+        name: issueaccesstoken
+        description: Encompass Developer Connect Issue an OAuth 2.0 access token
+        call: encompass-developer-connect-authentication.issueaccesstoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: encompass-developer-connect-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Encompass Developer Connect API — Authentication. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: encompass-developer-connect-issue-oauth
+      description: Encompass Developer Connect Issue an OAuth 2.0 access token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: encompass-developer-connect-authentication.issueaccesstoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
