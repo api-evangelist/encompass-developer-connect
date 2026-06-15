@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Encompass Developer Connect API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Encompass Developer Connect Issue an OAuth 2.0 access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.elliemae.com/encompass/v3/oauth2/v1/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Issues an OAuth 2.0 access token used to authenticate subsequent Encompass Developer Connect API calls. Supports password, client_credentials, and authorization_code grant types depending on the partner integration model."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loan Pipeline",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Encompass Developer Connect Search the loan pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.elliemae.com/encompass/v3/loanPipeline",
+            "params": [
+              {
+                "name": "cursorType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.elliemae.com/oauth2/v1/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a paginated, filtered view of loans in the Encompass pipeline. Callers may pass field-level filters, sort orders, and a cursor to iterate through large result sets."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Encompass Developer Connect Create a new loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.elliemae.com/encompass/v3/loans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.elliemae.com/oauth2/v1/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new loan file in Encompass with the supplied loan field data. The newly created loan is assigned a system loan identifier which is returned to the caller for subsequent operations."
+        },
+        {
+          "info": {
+            "name": "Encompass Developer Connect Retrieve a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.elliemae.com/encompass/v3/loans/:loanId",
+            "params": [
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entities",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.elliemae.com/oauth2/v1/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns the full loan field data model for the specified loan identifier, including borrower, property, loan terms, and transactional details from Encompass."
+        },
+        {
+          "info": {
+            "name": "Encompass Developer Connect Update a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.elliemae.com/encompass/v3/loans/:loanId",
+            "params": [
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appendData",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.elliemae.com/oauth2/v1/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Applies a partial update to the specified loan, merging the supplied loan field data with the existing record. Encompass validates business rules and rejects updates that violate configured loan workflow constraints."
+        },
+        {
+          "info": {
+            "name": "Encompass Developer Connect Delete a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.elliemae.com/encompass/v3/loans/:loanId",
+            "params": [
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.elliemae.com/oauth2/v1/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Deletes the specified loan from Encompass. Loan deletion is subject to user permissions and configured retention policies within the Encompass tenant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
