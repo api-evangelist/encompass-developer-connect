@@ -45,7 +45,7 @@ apis:
         url: openapi/encompass-developer-connect-openapi.yml
       - type: Postman
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/postman
-      - type: Forum
+      - type: Forums
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
       - type: ReleaseNotes
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
@@ -60,7 +60,7 @@ common:
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
   - type: Authentication
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
-  - type: Forum
+  - type: Forums
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
   - type: ReleaseNotes
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
