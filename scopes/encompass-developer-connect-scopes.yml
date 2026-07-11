@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/encompass-developer-connect-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/encompass-developer-connect-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.elliemae.com/oauth2/v1/token
+  - flow: clientCredentials
+    tokenUrl: https://api.elliemae.com/oauth2/v1/token
+scopes:
+- scope: lor
+  description: Loan origination access
+  flows:
+  - clientCredentials
+  - password
+  sources:
+  - openapi/encompass-developer-connect-openapi.yml
+- scope: lp
+  description: Loan pipeline access
+  flows:
+  - clientCredentials
+  - password
+  sources:
+  - openapi/encompass-developer-connect-openapi.yml

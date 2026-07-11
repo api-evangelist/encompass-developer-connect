@@ -50,6 +50,8 @@ apis:
       - type: ReleaseNotes
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
 common:
+  - type: OAuthScopes
+    url: scopes/encompass-developer-connect-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/ICEMortgageTechnology
   - type: Website
@@ -66,6 +68,8 @@ common:
     url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
   - type: Pricing
     url: https://www.icemortgagetechnology.com/encompass
+  - url: https://developer.icemortgagetechnology.com/developer-connect/docs/blogs
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
