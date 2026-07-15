@@ -50,6 +50,8 @@ apis:
       - type: ReleaseNotes
         url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
 common:
+  - type: AgenticAccess
+    url: agentic-access/encompass-developer-connect-agentic-access.yml
   - type: DomainSecurity
     url: security/encompass-developer-connect-domain-security.yml
   - type: Authentication
