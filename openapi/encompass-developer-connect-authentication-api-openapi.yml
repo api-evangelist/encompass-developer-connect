@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Encompass Developer Connect Authentication API
+  description: Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically configure, customize, and administer loan information and resources for Encompass clients. The platform exposes APIs across loan manufacturing, loan pipeline management, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Authentication is handled with OAuth 2.0, and supports User Impersonation, API User (ISV Partner), Federated SAML SSO, and Multi-Factor Authentication.
+  version: 1.0.0
+  contact:
+    name: ICE Mortgage Technology Developer Connect
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  license:
+    name: Proprietary
+    url: https://www.icemortgagetechnology.com/legal/terms
+servers:
+- url: https://api.elliemae.com/encompass/v3
+  description: Encompass Developer Connect production base URL
+tags:
+- name: Authentication
+  description: OAuth 2.0 token operations for issuing and revoking access tokens against Encompass Developer Connect. Supports user impersonation, ISV partner API user, and federated SAML SSO grant flows.
+paths:
+  /oauth2/v1/token:
+    post:
+      operationId: issueAccessToken
+      summary: Encompass Developer Connect Issue an OAuth 2.0 access token
+      description: Issues an OAuth 2.0 access token used to authenticate subsequent Encompass Developer Connect API calls. Supports password, client_credentials, and authorization_code grant types depending on the partner integration model.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Access token issued successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Invalid client credentials or grant
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        scope:
+          type: string
+    TokenRequest:
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - password
+          - client_credentials
+          - authorization_code
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+        client_id:
+          type: string
+        client_secret:
+          type: string
+          format: password
+        scope:
+          type: string
+      required:
+      - grant_type
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://api.elliemae.com/oauth2/v1/token
+          scopes:
+            lp: Loan pipeline access
+            lor: Loan origination access
+        clientCredentials:
+          tokenUrl: https://api.elliemae.com/oauth2/v1/token
+          scopes:
+            lp: Loan pipeline access
+            lor: Loan origination access
+externalDocs:
+  description: Encompass Developer Connect documentation
+  url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome

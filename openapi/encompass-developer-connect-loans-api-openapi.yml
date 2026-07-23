@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: Encompass Developer Connect Authentication Loans API
+  description: Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically configure, customize, and administer loan information and resources for Encompass clients. The platform exposes APIs across loan manufacturing, loan pipeline management, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Authentication is handled with OAuth 2.0, and supports User Impersonation, API User (ISV Partner), Federated SAML SSO, and Multi-Factor Authentication.
+  version: 1.0.0
+  contact:
+    name: ICE Mortgage Technology Developer Connect
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  license:
+    name: Proprietary
+    url: https://www.icemortgagetechnology.com/legal/terms
+servers:
+- url: https://api.elliemae.com/encompass/v3
+  description: Encompass Developer Connect production base URL
+tags:
+- name: Loans
+  description: Operations for retrieving, creating, updating, and deleting Encompass loan files and the rich loan field data model used across the mortgage origination lifecycle.
+paths:
+  /loans:
+    post:
+      operationId: createLoan
+      summary: Encompass Developer Connect Create a new loan
+      description: Creates a new loan file in Encompass with the supplied loan field data. The newly created loan is assigned a system loan identifier which is returned to the caller for subsequent operations.
+      tags:
+      - Loans
+      security:
+      - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loan'
+      responses:
+        '201':
+          description: Loan created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '400':
+          description: Invalid loan payload
+        '401':
+          description: Unauthorized
+  /loans/{loanId}:
+    get:
+      operationId: getLoan
+      summary: Encompass Developer Connect Retrieve a loan
+      description: Returns the full loan field data model for the specified loan identifier, including borrower, property, loan terms, and transactional details from Encompass.
+      tags:
+      - Loans
+      security:
+      - oauth2: []
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: entities
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loan retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Loan not found
+    patch:
+      operationId: updateLoan
+      summary: Encompass Developer Connect Update a loan
+      description: Applies a partial update to the specified loan, merging the supplied loan field data with the existing record. Encompass validates business rules and rejects updates that violate configured loan workflow constraints.
+      tags:
+      - Loans
+      security:
+      - oauth2: []
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appendData
+        in: query
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loan'
+      responses:
+        '200':
+          description: Loan updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '400':
+          description: Invalid loan payload
+        '401':
+          description: Unauthorized
+        '404':
+          description: Loan not found
+    delete:
+      operationId: deleteLoan
+      summary: Encompass Developer Connect Delete a loan
+      description: Deletes the specified loan from Encompass. Loan deletion is subject to user permissions and configured retention policies within the Encompass tenant.
+      tags:
+      - Loans
+      security:
+      - oauth2: []
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Loan deleted successfully
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Loan not found
+components:
+  schemas:
+    Loan:
+      type: object
+      properties:
+        guid:
+          type: string
+        loanNumber:
+          type: string
+        applications:
+          type: array
+          items:
+            type: object
+        property:
+          type: object
+        contacts:
+          type: array
+          items:
+            type: object
+        currentMilestone:
+          type: object
+        loanProgram:
+          type: string
+        loanAmount:
+          type: number
+          format: double
+        loanType:
+          type: string
+        purposeOfLoan:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://api.elliemae.com/oauth2/v1/token
+          scopes:
+            lp: Loan pipeline access
+            lor: Loan origination access
+        clientCredentials:
+          tokenUrl: https://api.elliemae.com/oauth2/v1/token
+          scopes:
+            lp: Loan pipeline access
+            lor: Loan origination access
+externalDocs:
+  description: Encompass Developer Connect documentation
+  url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
