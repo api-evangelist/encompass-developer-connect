@@ -6,9 +6,22 @@ description: >-
   pipeline, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Access is
   authenticated via OAuth 2.0 with support for user impersonation, ISV partner API users, and federated SAML SSO.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/encompass-developer-connect.png
 tags:
   - Encompass
   - ICE Mortgage Technology
@@ -21,34 +34,81 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/encompass-developer-connect/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: encompass-developer-connect:encompass-developer-connect
-    name: Encompass Developer Connect API
-    description: >-
-      Encompass Developer Connect exposes REST APIs for managing Encompass loan files, loan pipelines, milestones,
-      contacts, documents, and product and pricing data. Operations include creating, retrieving, updating, and deleting
-      loans, searching the loan pipeline, and orchestrating loan workflow milestones programmatically.
-    humanURL: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
-    baseURL: https://api.elliemae.com/encompass/v3
-    tags:
-      - Loans
-      - Loan Pipeline
-      - Mortgage
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
-      - type: GettingStarted
-        url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
-      - type: Authentication
-        url: https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
-      - type: OpenAPI
-        url: openapi/encompass-developer-connect-openapi.yml
-      - type: Postman
-        url: https://developer.icemortgagetechnology.com/developer-connect/docs/postman
-      - type: Forums
-        url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
-      - type: ReleaseNotes
-        url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
+- aid: encompass-developer-connect:encompass-developer-connect-authentication-api
+  name: Encompass Developer Connect Authentication API
+  description: >-
+    OAuth 2.0 token operations for issuing and revoking access tokens against Encompass Developer Connect.
+    Supports user impersonation, ISV partner API user, and federated SAML SSO grant flows.
+  humanURL: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  baseURL: https://api.elliemae.com/encompass/v3
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/encompass-developer-connect-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  - type: GettingStarted
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
+  - type: Authentication
+    url: >-
+      https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
+  - type: Postman
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/postman
+  - type: Forums
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
+  - type: ReleaseNotes
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
+- aid: encompass-developer-connect:encompass-developer-connect-loan-pipeline-api
+  name: Encompass Developer Connect Loan Pipeline API
+  description: >-
+    Operations for searching and filtering Encompass loan pipelines, including saved pipeline views and
+    ad-hoc cursor-based queries across the loan portfolio.
+  humanURL: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  baseURL: https://api.elliemae.com/encompass/v3
+  tags:
+  - Loan Pipeline
+  properties:
+  - type: OpenAPI
+    url: openapi/encompass-developer-connect-loan-pipeline-api-openapi.yml
+  - type: Documentation
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  - type: GettingStarted
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
+  - type: Authentication
+    url: >-
+      https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
+  - type: Postman
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/postman
+  - type: Forums
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
+  - type: ReleaseNotes
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
+- aid: encompass-developer-connect:encompass-developer-connect-loans-api
+  name: Encompass Developer Connect Loans API
+  description: >-
+    Operations for retrieving, creating, updating, and deleting Encompass loan files and the rich loan
+    field data model used across the mortgage origination lifecycle.
+  humanURL: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  baseURL: https://api.elliemae.com/encompass/v3
+  tags:
+  - Loans
+  properties:
+  - type: OpenAPI
+    url: openapi/encompass-developer-connect-loans-api-openapi.yml
+  - type: Documentation
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/welcome
+  - type: GettingStarted
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/getting-started
+  - type: Authentication
+    url: >-
+      https://developer.icemortgagetechnology.com/developer-connect/docs/authentication-and-authorization
+  - type: Postman
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/postman
+  - type: Forums
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/developer-forum
+  - type: ReleaseNotes
+    url: https://developer.icemortgagetechnology.com/developer-connect/docs/release-notes
 common:
   - type: AgenticAccess
     url: agentic-access/encompass-developer-connect-agentic-access.yml
