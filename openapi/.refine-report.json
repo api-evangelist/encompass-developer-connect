@@ -1,0 +1,18 @@
+{
+  "provider": "encompass-developer-connect",
+  "sources": [
+    "encompass-developer-connect-authentication-api-openapi.yml",
+    "encompass-developer-connect-loan-pipeline-api-openapi.yml",
+    "encompass-developer-connect-loans-api-openapi.yml"
+  ],
+  "outputs": [
+    "encompass-developer-connect-authentication-api-openapi.yml",
+    "encompass-developer-connect-loan-pipeline-api-openapi.yml",
+    "encompass-developer-connect-loans-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
