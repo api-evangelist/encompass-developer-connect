@@ -32,7 +32,7 @@ tags:
 created: '2025-02-21'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/encompass-developer-connect/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: encompass-developer-connect:encompass-developer-connect-authentication-api
   name: Encompass Developer Connect Authentication API
