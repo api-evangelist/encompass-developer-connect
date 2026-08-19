@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Encompass Developer Connect Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Encompass Developer Connect Issue an OAuth 2.0 access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.elliemae.com/encompass/v3/oauth2/v1/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Issues an OAuth 2.0 access token used to authenticate subsequent Encompass Developer Connect API calls. Supports password, client_credentials, and authorization_code grant types depending on the partner integration model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

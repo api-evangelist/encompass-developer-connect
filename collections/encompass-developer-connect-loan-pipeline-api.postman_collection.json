@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "b66cfdb3-adbe-43e8-b6d2-a1a534f8f59a",
+      "name": "Loan Pipeline",
+      "description": {
+        "content": "Operations for searching and filtering Encompass loan pipelines, including saved pipeline views and ad-hoc cursor-based queries across the loan portfolio.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4acefba6-13cb-40b5-ab8c-7bed615f100d",
+          "name": "Encompass Developer Connect Search the loan pipeline",
+          "request": {
+            "name": "Encompass Developer Connect Search the loan pipeline",
+            "description": {
+              "content": "Returns a paginated, filtered view of loans in the Encompass pipeline. Callers may pass field-level filters, sort orders, and a cursor to iterate through large result sets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loanPipeline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursorType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "lp lor"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.elliemae.com/oauth2/v1/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filter\": \"<object>\",\n  \"sortOrder\": [\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    },\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aec2def2-55ff-42c7-b926-b0f8fcf6212e",
+              "name": "Loan pipeline search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loanPipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": \"<object>\",\n  \"sortOrder\": [\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    },\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"loanGuid\": \"string\",\n    \"fields\": {\n      \"key_0\": 5527\n    }\n  },\n  {\n    \"loanGuid\": \"string\",\n    \"fields\": {\n      \"key_0\": true\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c736c8ce-cd8b-45dd-b12e-fe2d31940496",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loanPipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": \"<object>\",\n  \"sortOrder\": [\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    },\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17cdda98-6063-48d7-b790-65130748741c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loanPipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": \"<object>\",\n  \"sortOrder\": [\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    },\n    {\n      \"canonicalName\": \"<string>\",\n      \"order\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.elliemae.com/encompass/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b735d896-16ea-47a0-ac26-97d10e81154b",
+    "name": "Encompass Developer Connect Authentication Loan Pipeline API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically configure, customize, and administer loan information and resources for Encompass clients. The platform exposes APIs across loan manufacturing, loan pipeline management, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Authentication is handled with OAuth 2.0, and supports User Impersonation, API User (ISV Partner), Federated SAML SSO, and Multi-Factor Authentication.\n\nContact Support:\n Name: ICE Mortgage Technology Developer Connect",
+      "type": "text/plain"
+    }
+  }
+}

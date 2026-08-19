@@ -1,0 +1,1096 @@
+{
+  "item": [
+    {
+      "id": "a201a33f-fc97-4c4d-ad5c-7d77e601f4fa",
+      "name": "Loans",
+      "description": {
+        "content": "Operations for retrieving, creating, updating, and deleting Encompass loan files and the rich loan field data model used across the mortgage origination lifecycle.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3af11c4d-760a-41a4-bf3b-62d92d8009a8",
+          "name": "Encompass Developer Connect Create a new loan",
+          "request": {
+            "name": "Encompass Developer Connect Create a new loan",
+            "description": {
+              "content": "Creates a new loan file in Encompass with the supplied loan field data. The newly created loan is assigned a system loan identifier which is returned to the caller for subsequent operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "lp lor"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.elliemae.com/oauth2/v1/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "797ecf5d-4c63-4b69-bc9d-a329c893503c",
+              "name": "Loan created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"string\",\n  \"loanNumber\": \"string\",\n  \"property\": {},\n  \"currentMilestone\": {},\n  \"loanProgram\": \"string\",\n  \"loanAmount\": 2731.8877700194644,\n  \"loanType\": \"string\",\n  \"purposeOfLoan\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29b45796-ff22-4988-af96-f8cf6b9ece08",
+              "name": "Invalid loan payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5eca9d1c-7163-4ba9-9c66-f65506b7f886",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "598d41fc-956d-4b15-a515-6fd27bbbf997",
+          "name": "Encompass Developer Connect Retrieve a loan",
+          "request": {
+            "name": "Encompass Developer Connect Retrieve a loan",
+            "description": {
+              "content": "Returns the full loan field data model for the specified loan identifier, including borrower, property, loan terms, and transactional details from Encompass.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loans",
+                ":loanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "entities",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loanId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "lp lor"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.elliemae.com/oauth2/v1/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "88416652-c7ef-4fc4-b08f-5d7c6403828e",
+              "name": "Loan retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"string\",\n  \"loanNumber\": \"string\",\n  \"property\": {},\n  \"currentMilestone\": {},\n  \"loanProgram\": \"string\",\n  \"loanAmount\": 2731.8877700194644,\n  \"loanType\": \"string\",\n  \"purposeOfLoan\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffbb49e5-fc31-4b91-823c-89b6d5fcb7db",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c56e515-bc7e-4ac0-8052-c15311579dc7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "619a1183-df15-4981-ac03-b026a94dd8ff",
+              "name": "Loan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78fd4868-1862-43c1-91de-33f85aa45f4c",
+          "name": "Encompass Developer Connect Update a loan",
+          "request": {
+            "name": "Encompass Developer Connect Update a loan",
+            "description": {
+              "content": "Applies a partial update to the specified loan, merging the supplied loan field data with the existing record. Encompass validates business rules and rejects updates that violate configured loan workflow constraints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loans",
+                ":loanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appendData",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loanId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "lp lor"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.elliemae.com/oauth2/v1/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f6ec59ba-a5c8-41d9-b83c-33ae7f20ab2a",
+              "name": "Loan updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appendData",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"string\",\n  \"loanNumber\": \"string\",\n  \"property\": {},\n  \"currentMilestone\": {},\n  \"loanProgram\": \"string\",\n  \"loanAmount\": 2731.8877700194644,\n  \"loanType\": \"string\",\n  \"purposeOfLoan\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e30f65b-3d0d-4c07-8991-3baa1bfca593",
+              "name": "Invalid loan payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appendData",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95bf0025-bf1e-445e-a2c0-6fc2b458c5c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appendData",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0434549b-2554-4e7f-8e22-be3d4594b60a",
+              "name": "Loan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appendData",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"loanNumber\": \"<string>\",\n  \"applications\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"property\": \"<object>\",\n  \"contacts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"currentMilestone\": \"<object>\",\n  \"loanProgram\": \"<string>\",\n  \"loanAmount\": \"<double>\",\n  \"loanType\": \"<string>\",\n  \"purposeOfLoan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a955124b-f588-4a72-8953-3411f4575baf",
+          "name": "Encompass Developer Connect Delete a loan",
+          "request": {
+            "name": "Encompass Developer Connect Delete a loan",
+            "description": {
+              "content": "Deletes the specified loan from Encompass. Loan deletion is subject to user permissions and configured retention policies within the Encompass tenant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loans",
+                ":loanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loanId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "lp lor"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.elliemae.com/oauth2/v1/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78519d79-5811-4d76-b30c-6489c852400a",
+              "name": "Loan deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c385977-3214-4489-9d6c-2b7b181958cb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f073bda-ee75-4343-9e9d-96b0022f0bba",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "171bc792-9790-4896-97ff-c6cfa54a8010",
+              "name": "Loan not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loans",
+                    ":loanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.elliemae.com/encompass/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "deb98b00-e257-421f-a881-d29c9d43ebbb",
+    "name": "Encompass Developer Connect Authentication Loans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically configure, customize, and administer loan information and resources for Encompass clients. The platform exposes APIs across loan manufacturing, loan pipeline management, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Authentication is handled with OAuth 2.0, and supports User Impersonation, API User (ISV Partner), Federated SAML SSO, and Multi-Factor Authentication.\n\nContact Support:\n Name: ICE Mortgage Technology Developer Connect",
+      "type": "text/plain"
+    }
+  }
+}
