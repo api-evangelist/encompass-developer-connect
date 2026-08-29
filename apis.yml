@@ -6,6 +6,18 @@ description: >-
   pipeline, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Access is
   authenticated via OAuth 2.0 with support for user impersonation, ISV partner API users, and federated SAML SSO.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
