@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Encompass Developer Connect Authentication Loans API
-  description: Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically configure, customize, and administer loan information and resources for Encompass clients. The platform exposes APIs across loan manufacturing, loan pipeline management, product and pricing, compliance, documents and eFolder, loan data extracts, and loan folders. Authentication is handled with OAuth 2.0, and supports User Impersonation, API User (ISV Partner), Federated SAML SSO, and Multi-Factor Authentication.
+  title: Encompass Developer Connect Loans API
+  description: Encompass Developer Connect is a REST API platform from ICE Mortgage Technology that allows developers to programmatically configure, customize, and administer loan information and resources for Encompass clients.
   version: 1.0.0
   contact:
     name: ICE Mortgage Technology Developer Connect

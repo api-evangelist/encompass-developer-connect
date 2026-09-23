@@ -1,9 +1,7 @@
 {
   "provider": "encompass-developer-connect",
   "sources": [
-    "encompass-developer-connect-authentication-api-openapi.yml",
-    "encompass-developer-connect-loan-pipeline-api-openapi.yml",
-    "encompass-developer-connect-loans-api-openapi.yml"
+    "_original/encompass-developer-connect-openapi.yml"
   ],
   "outputs": [
     "encompass-developer-connect-authentication-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "encompass-developer-connect-authentication-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "encompass-developer-connect-loan-pipeline-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "encompass-developer-connect-loans-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "encompass-developer-connect-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "encompass-developer-connect-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "encompass-developer-connect-loan-pipeline-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "encompass-developer-connect-loans-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
